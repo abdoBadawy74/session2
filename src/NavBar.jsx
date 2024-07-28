@@ -20,7 +20,7 @@ export default function NavBar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className=" px-4 collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <Link className="nav-link" to="home" >
@@ -54,7 +54,10 @@ export default function NavBar() {
             </li>
           
           </ul>
-         
+         <div>
+          <Link to="register" className="btn btn-outline-info mx-2">Register</Link>
+          <Link to="login" className="btn btn-outline-info">Login</Link>
+         </div>
         </div>
       </nav>
     </div>
