@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Home from "./Home";
 import About from "./About";
 import Parent from "./Parent";
@@ -11,9 +11,23 @@ import Projects from "./Projects";
 import Web from "./Web";
 import Mobile from "./Mobile";
 import Movies from "./Movies";
+import Register from "./Auth/Register";
+import Login from "./Auth/Login";
+import { jwtDecode } from "jwt-decode";
 
-export default class App extends Component {
-  render() {
+
+export default function App () {
+
+  const [user, setUser] = useState(null)
+  
+  function getUserData(){
+    let encodedToken = localStorage.getItem("userToken");
+      let decodedToke= jwtDecode(encodedToken);
+      setUser(decodedToke)
+      console.log(decodedToke);
+  }
+
+
     return (
       <div>
         <NavBar />
@@ -31,6 +45,8 @@ export default class App extends Component {
               <Route path="web" element={<Web />} />
               <Route path="mobile" element={<Mobile />} />
             </Route>
+            <Route path="register" element={<Register/>}></Route>
+            <Route path="login" element={<Login getUser={getUserData}/>}></Route>
 
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
@@ -40,7 +56,17 @@ export default class App extends Component {
       </div>
     );
   }
-}
 
-// routing
-// react-router-dom
+
+// squence of start project 
+
+// 1- see ui / analysis
+// 2- define components
+// 3- put global variable 
+// 4- define routing 
+// 5- start auth 
+
+
+//  componets | pages | auth
+
+// 
